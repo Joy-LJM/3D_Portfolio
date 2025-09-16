@@ -1,0 +1,10 @@
+services:
+  vite:
+    image: node:22.12.0
+    working_dir: /app
+    volumes: #for dev env
+    - .:/app
+    - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install --legacy-peer-deps && npm run dev -- --host 0.0.0.0"
