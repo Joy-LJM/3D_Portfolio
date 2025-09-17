@@ -5,9 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    host:'0.0.0.0',
     watch:{
+      interval: 100,
       usePolling:true, //Force polling to ensure that file changes under Docker can be detected
     },
-    host:true
   },
 })
