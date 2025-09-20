@@ -8,17 +8,17 @@ COPY package*.json ./
 # Install node packages,
 RUN npm install --legacy-peer-deps
 # Copy the project code
-COPY . .
+# COPY . .
 # vite build -> dist/
-RUN npm run build   
+# RUN npm run build   
 
 # Runtime phase
-FROM node:22.12.0 AS runtime
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-RUN npm install -g serve
+# FROM node:22.12.0 AS runtime
+# WORKDIR /app
+# COPY --from=build /app/dist ./dist
+# RUN npm install -g serve
 # Expose Vite default port
 EXPOSE 5173
 
 # Start the app using npm command
-CMD ["serve", "-s", "dist", "-l", "5173"]
+CMD ["npm", "run", "dev", "--", "--host","0.0.0.0"]
