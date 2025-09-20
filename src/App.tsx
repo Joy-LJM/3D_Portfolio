@@ -1,11 +1,17 @@
-
+import { About, Contact, Experience, Hero, Navbar, Tech, Works } from "./components"
 
 function App() {
 
   return (
     <>
       <div>
-       3d portfoliofdf
+       <Navbar/>
+       <Hero/>
+       <About/>
+       <Experience/>
+       <Tech/>
+       <Works/>
+       <Contact/>
       </div>
     </>
   )

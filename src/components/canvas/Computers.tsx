@@ -1,10 +1,14 @@
-import React, { Suspense, useEffect, useState } from "react";
+import  { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-const Computers = ({ isMobile }) => {
+interface ComputersProps {
+  isMobile: boolean;
+}
+
+const Computers = ({ isMobile }: ComputersProps) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
 
   return (
@@ -40,7 +44,7 @@ const ComputersCanvas = () => {
     setIsMobile(mediaQuery.matches);
 
     // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
+    const handleMediaQueryChange = (event:MediaQueryListEvent) => {
       setIsMobile(event.matches);
     };
 
