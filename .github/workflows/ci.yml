@@ -35,6 +35,7 @@ jobs:
 
   deploy:
     needs: build # rely on build job,only run this job if build is successful
+    environment: production
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' # only run this job if the branch is master
     steps:
@@ -46,5 +47,5 @@ jobs:
         with: # pass the secrets as parameter to the uses action
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id:: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./
