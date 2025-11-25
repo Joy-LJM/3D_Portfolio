@@ -14,11 +14,10 @@ export default function About() {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        I'm a skilled software developer with experience in TypeScript and
-        JavaScript, and expertise in frameworks like React, Node.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
+        I’m a front-end developer with nearly three years of hands-on experience building responsive, user-friendly web applications. I specialize in React, JavaScript, and modern UI frameworks, and I’m currently expanding my skill set toward full-stack development.
+<br/>
+<br/>
+        I’m passionate about great design, smooth user flows, and learning new technologies—especially anything related to AI and smart interfaces. Coding for me is a mix of creativity and problem-solving, and I enjoy improving a little every day.
       </motion.p>
 
       {/* <div className="mt-20 flex flex-wrap gap-10">

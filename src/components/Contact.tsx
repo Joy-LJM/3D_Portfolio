@@ -4,28 +4,21 @@ import { slideIn } from '../utils/motion'
 
 export default function Contact() {
   const contactInfo = {
-    email: 'your-email@example.com',
-    location: 'City, Country',
-    socialMedia: [
+    contacts: [
       {
         name: 'GitHub',
-        url: 'https://github.com/yourusername',
+        url: 'https://github.com/Joy-LJM',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'
       },
       {
         name: 'LinkedIn',
-        url: 'https://linkedin.com/in/yourusername',
+        url: 'https://www.linkedin.com/in/jiamin-luo/',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg'
       },
       {
-        name: 'Twitter',
-        url: 'https://twitter.com/yourusername',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg'
-      },
-      {
-        name: 'Instagram',
-        url: 'https://instagram.com/yourusername',
-        icon: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg'
+        name: 'GMail',
+        url: '`mailto:joy00ff00@gmail.com`',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
       }
     ]
   }
@@ -39,50 +32,10 @@ export default function Contact() {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
-        <div className="mt-12 flex flex-col gap-8">
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-tertiary rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-white font-medium">Email</h4>
-                <a href={`mailto:${contactInfo.email}`} className="text-secondary hover:text-white transition-colors">
-                  {contactInfo.email}
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-tertiary rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-tertiary rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-white font-medium">Location</h4>
-                <p className="text-secondary">{contactInfo.location}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Media Links */}
+        <div className="flex flex-col gap-8">
           <div className="mt-8">
-            <h4 className="text-white font-medium mb-6 text-xl">Follow Me</h4>
             <div className="flex flex-wrap gap-4">
-              {contactInfo.socialMedia.map((social) => (
+              {contactInfo.contacts.map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.url}
@@ -90,7 +43,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-14 h-14 bg-tertiary rounded-full flex items-center justify-center hover:bg-[#915EFF] transition-colors"
+                  className="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-[#915EFF] transition-colors"
                 >
                   <img src={social.icon} alt={social.name} className="w-7 h-7" />
                 </motion.a>

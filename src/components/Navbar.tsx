@@ -25,9 +25,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed z-20 ${
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed z-20 
+      ${
         scrolled ? "bg-primary transition delay-150 duration-300" : "bg-transparent"
-      }`}
+      }
+      `}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link to="/" className="flex items-center gap-2" onClick={()=>{
