@@ -106,7 +106,7 @@ a, button { cursor: none; }
 }
 
 /* ─── Layout utilities ───────────────────────────────── */
-.section    { padding: 120px 0; position: relative; }
+.section    { padding-top: 50px; position: relative; }
 .container  { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
 
 .section-label {
@@ -141,6 +141,6 @@ a, button { cursor: none; }
 
 @media (max-width: 768px) {
   .container { padding: 0 24px; }
-  .section   { padding: 80px 0; }
+  .section   { padding-top: 80px; }
 }
 </style>

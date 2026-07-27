@@ -9,10 +9,11 @@ const groups: Group[] = [
     category: 'Frontend',
     icon: '⬡',
     skills: [
-      { name: 'React / TypeScript',      level: 94 },
-      { name: 'Redux',           level: 88 },
-      { name: 'React Query',             level: 85 },
-      { name: 'Material UI / Webpack',   level: 87 },
+      { name: 'React',      level: 94 },
+      {name:"Vue", level:78},
+      { name: 'Typescript',             level: 85 },
+      { name: 'Material UI',   level: 87 },
+      { name: 'Webpack',           level: 88 },
     ],
   },
   {
@@ -65,16 +66,8 @@ onMounted(() => {
         <!-- Left: heading -->
         <div class="skills-intro">
           <h2 class="skills-title">
-            Tools &amp;<br /><em>Craft.</em>
+            Skills &amp;<br /><em>Stack.</em>
           </h2>
-          <p class="skills-sub">
-            Proficiency built through shipping real products —
-            not tutorial certificates.
-          </p>
-          <p class="skills-sub" style="margin-top:12px">
-            I pick the right tool for the job and invest deeply
-            in the fundamentals underneath every framework.
-          </p>
         </div>
 
         <!-- Right: skill bars -->
@@ -130,12 +123,6 @@ onMounted(() => {
   margin-bottom: 24px;
 }
 .skills-title em { font-style: italic; color: var(--accent); }
-
-.skills-sub {
-  font-family: var(--font-serif);
-  font-size: 15px; font-weight: 300; line-height: 1.85;
-  color: var(--muted);
-}
 
 /* Groups */
 .skills-groups { display: flex; flex-direction: column; gap: 48px; }

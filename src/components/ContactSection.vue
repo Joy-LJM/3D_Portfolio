@@ -2,10 +2,25 @@
 import { ref, reactive } from 'vue'
 
 const form = reactive({ name: '', email: '', message: '' })
+const isNameFieldEmpty=ref(false);
+const isEmailFieldEmpty=ref(false);
+const isMsgFieldEmpty=ref(false)
 const sent = ref(false)
 
 const onSubmit = () => {
-  sent.value = true
+  if(!form.name){
+    isNameFieldEmpty.value=true;
+  }
+  if(!form.email){
+    isEmailFieldEmpty.value=true;
+  }
+  if(!form.message){
+    isMsgFieldEmpty.value=true;
+  }
+  if(form.email && form.message&& form.name){
+    sent.value = true
+
+  }
 }
 
 const socials = [
@@ -58,6 +73,7 @@ const socials = [
                 autocomplete="name"
                 required
               />
+              <span class='error-msg' v-show="isNameFieldEmpty & !form.name">Name is required.</span>
             </div>
             <div class="field">
               <label for="cf-email">Email</label>
@@ -69,6 +85,7 @@ const socials = [
                 autocomplete="email"
                 required
               />
+              <span class='error-msg' v-show="isEmailFieldEmpty & !form.email">Email is required.</span>
             </div>
             <div class="field">
               <label for="cf-message">Message</label>
@@ -79,6 +96,7 @@ const socials = [
                 placeholder="Tell me about your project, timeline, and budget…"
                 required
               />
+              <span class='error-msg' v-show="isMsgFieldEmpty & !form.message">Message is required.</span>
             </div>
             <button type="submit" class="form-btn">
               Send message
@@ -99,10 +117,10 @@ const socials = [
     <!-- Footer -->
     <footer class="footer">
       <div class="container footer-row">
-        <span class="footer-copy">© 2026 Joy. Built with Vue &amp; TypeScript.</span>
+        <span class="footer-copy">© 2026 Joy. All rights reserved.</span>
         <span class="footer-tag">
           <span class="footer-tag-dot" aria-hidden="true" />
-          Crafted with precision.
+          Crafted with passion.
         </span>
       </div>
     </footer>
@@ -191,7 +209,9 @@ const socials = [
 .field textarea::placeholder { color: var(--muted); }
 .field input:focus,
 .field textarea:focus { border-color: var(--accent); }
-
+.error-msg{
+  color: red;
+}
 .form-btn {
   display: inline-flex; align-items: center; gap: 12px;
   font-family: var(--font-mono);

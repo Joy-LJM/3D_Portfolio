@@ -6,8 +6,6 @@ interface Project {
   title: string
   desc:  string
   stack: string[]
-  year:  string
-  type:  string
   href:  string
 }
 
@@ -16,9 +14,7 @@ const projects: Project[] = [
     num:   '01',
     title: 'Cooper App',
     desc:  'Industrial welding application with welder scan features and robot API integration. Translated Figma designs into responsive Vue interfaces and validated position/weld APIs between software and robot controllers.',
-    stack: ['Vue', 'TypeScript', 'fp-ts','Azure DevOps', 'Figma'],
-    year:  '2026',
-    type:  'Industrial UI',
+    stack: ['Vue', 'TypeScript', 'fp-ts','Azure DevOps', 'Tailwind CSS'],
     href:  'https://lered.info/m/cobotresources?r=qr',
   },
   {
@@ -26,8 +22,6 @@ const projects: Project[] = [
     title: 'MediBridge',
     desc:  'Team capstone project: scalable healthcare frontend with reusable React components, backend service integration, and performance optimization via React Query caching and minimized re-renders.',
     stack: ['React', 'Material UI', 'React Query', 'Node.js', 'MongoDB'],
-    year:  '2025',
-    type:  'Capstone Project',
     href:  'https://medi-bridge-1.vercel.app/',
   },
   {
@@ -35,8 +29,6 @@ const projects: Project[] = [
     title: 'SME Financing Guarantee Scheme',
     desc:  'Migrated the SFGS loan platform from Angular to React at HSBC Hang Seng, supporting multiple loan products. Implemented Jenkins CI/CD security scans achieving 100% compliance with internal security standards.',
     stack: ['React', 'Redux Toolkit', 'Material UI', 'Jenkins', 'React-Hook-Form'],
-    year:  '2022',
-    type:  'Banking App',
     href:  'https://www.biz-application.hangseng.com/portalserver/en-hk/sfgs',
   },
 ]
@@ -64,10 +56,6 @@ onMounted(() => {
         <h2 :class="['projects-title reveal', { in: visible }]">
           Things I've<br /><em>built.</em>
         </h2>
-        <p :class="['projects-sub reveal', { in: visible }]" style="transition-delay:0.12s">
-          A sample of production work — each shipped, iterated on, and<br />
-          running in front of real users.
-        </p>
       </div>
 
       <div class="project-list">
@@ -116,14 +104,6 @@ onMounted(() => {
   font-weight: 300; line-height: 1.04; letter-spacing: -0.025em;
 }
 .projects-title em { font-style: italic; color: var(--accent); }
-
-.projects-sub {
-  font-family: var(--font-serif);
-  font-size: 15px; font-weight: 300; line-height: 1.8;
-  color: var(--muted); max-width: 360px;
-  text-align: right;
-  transition-delay: 0.12s !important;
-}
 
 /* ── Rows ── */
 .project-list { display: flex; flex-direction: column; }
