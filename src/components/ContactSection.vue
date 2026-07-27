@@ -73,7 +73,7 @@ const socials = [
                 autocomplete="name"
                 required
               />
-              <span class='error-msg' v-show="isNameFieldEmpty & !form.name">Name is required.</span>
+              <span class='error-msg' v-show="isNameFieldEmpty && !form.name">Name is required.</span>
             </div>
             <div class="field">
               <label for="cf-email">Email</label>
@@ -85,7 +85,7 @@ const socials = [
                 autocomplete="email"
                 required
               />
-              <span class='error-msg' v-show="isEmailFieldEmpty & !form.email">Email is required.</span>
+              <span class='error-msg' v-show="isEmailFieldEmpty && !form.email">Email is required.</span>
             </div>
             <div class="field">
               <label for="cf-message">Message</label>
@@ -93,10 +93,10 @@ const socials = [
                 id="cf-message"
                 v-model="form.message"
                 rows="5"
-                placeholder="Tell me about your project, timeline, and budget…"
+                placeholder="Tell me about your project"
                 required
               />
-              <span class='error-msg' v-show="isMsgFieldEmpty & !form.message">Message is required.</span>
+              <span class='error-msg' v-show="isMsgFieldEmpty && !form.message">Message is required.</span>
             </div>
             <button type="submit" class="form-btn">
               Send message
