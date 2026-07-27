@@ -26,7 +26,7 @@ onMounted(() => {
         <div class="about-portrait">
           <div class="portrait-frame">
             <div class="portrait-inner">
-              <img src="../img/personal_pic.jpg" alt class="portrait-img" />
+              <img src="../img/personal_pic.jpg" alt="Portrait of the developer" class="portrait-img" />
             </div>
           </div>
           <div class="portrait-shadow-frame" aria-hidden="true" />
