@@ -70,7 +70,6 @@ onMounted(() => {
           <div class="pr-left">
             <span class="pr-num">{{ p.num }}</span>
             <div class="pr-info">
-              <span class="pr-type">{{ p.type }}</span>
               <h3 class="pr-title">{{ p.title }}</h3>
               <p class="pr-desc">{{ p.desc }}</p>
               <ul class="pr-stack" aria-label="Tech stack">
@@ -79,7 +78,6 @@ onMounted(() => {
             </div>
           </div>
           <div class="pr-right">
-            <span class="pr-year">{{ p.year }}</span>
             <a :href="p.href" class="pr-arrow" aria-label="View project">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                 <path d="M3 15L15 3M15 3H7M15 3v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
