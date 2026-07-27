@@ -48,7 +48,7 @@ onMounted(() => {
 
 <template>
   <section id="projects" class="section" ref="root">
-    <span class="section-bg-number" aria-hidden="true">03</span>
+    <span class="section-bg-number" aria-hidden="true">02</span>
     <div class="container">
       <p class="section-label">// selected work</p>
 

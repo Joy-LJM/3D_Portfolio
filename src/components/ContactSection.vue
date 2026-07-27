@@ -31,7 +31,7 @@ const socials = [
 
 <template>
   <section id="contact" class="section contact-section">
-    <span class="section-bg-number" aria-hidden="true">05</span>
+    <span class="section-bg-number" aria-hidden="true">04</span>
     <div class="container">
       <p class="section-label">// let's talk</p>
 

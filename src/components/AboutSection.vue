@@ -17,7 +17,7 @@ onMounted(() => {
 
 <template>
   <section id="about" class="section" ref="root">
-    <span class="section-bg-number" aria-hidden="true">02</span>
+    <span class="section-bg-number" aria-hidden="true">01</span>
     <div class="container">
       <p class="section-label">// about me</p>
 
