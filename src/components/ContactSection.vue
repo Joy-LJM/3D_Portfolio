@@ -2,24 +2,49 @@
 import { ref, reactive } from 'vue'
 
 const form = reactive({ name: '', email: '', message: '' })
-const isNameFieldEmpty=ref(false);
-const isEmailFieldEmpty=ref(false);
-const isMsgFieldEmpty=ref(false)
+const isNameFieldEmpty = ref(false)
+const isEmailFieldEmpty = ref(false)
+const isMsgFieldEmpty = ref(false)
 const sent = ref(false)
+const isSending = ref(false)
+const sendError = ref('')
 
-const onSubmit = () => {
-  if(!form.name){
-    isNameFieldEmpty.value=true;
+const onSubmit = async () => {
+  // simple validation
+  isNameFieldEmpty.value = !form.name
+  isEmailFieldEmpty.value = !form.email
+  isMsgFieldEmpty.value = !form.message
+
+  if (form.name && form.email && form.message) {
+    await sendMessage()
   }
-  if(!form.email){
-    isEmailFieldEmpty.value=true;
-  }
-  if(!form.message){
-    isMsgFieldEmpty.value=true;
-  }
-  if(form.email && form.message&& form.name){
+}
+
+const apiUrl = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api/contact`
+  : '/api/contact'
+
+const sendMessage = async () => {
+  isSending.value = true
+  sendError.value = ''
+
+  try {
+    const res = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      throw new Error(data.error || 'Unable to send message right now.')
+    }
+
     sent.value = true
-
+  } catch (err) {
+    sendError.value = err instanceof Error ? err.message : 'Unable to send message.'
+  } finally {
+    isSending.value = false
   }
 }
 
@@ -98,12 +123,14 @@ const socials = [
               />
               <span class='error-msg' v-show="isMsgFieldEmpty && !form.message">Message is required.</span>
             </div>
-            <button type="submit" class="form-btn">
-              Send message
+            <button type="submit" class="form-btn" :disabled="isSending">
+              <span v-if="!isSending">Send message</span>
+              <span v-else>Sending...</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
+            <p class="error-msg" v-if="sendError">{{ sendError }}</p>
           </form>
 
           <div v-else class="sent-state" role="status">
