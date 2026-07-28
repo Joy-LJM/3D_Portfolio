@@ -406,7 +406,11 @@ const socials = [
   text-align: center;
   max-width: 280px;
 }
-
+@media( max-width :401px ){
+  .contact-right ,.contact-socials{
+    width:90%;
+  }
+}
 /* ── Footer ── */
 .footer {
   border-top: 1px solid var(--border);

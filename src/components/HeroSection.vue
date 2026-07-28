@@ -20,7 +20,7 @@ const scrollTo = (id: string) => {
       </h1>
 
       <p class="hero-tagline">
-        Software Developer passionate about building modern 
+        A software developer passionate about building modern 
        applications 
       </p>
 
@@ -299,7 +299,7 @@ const scrollTo = (id: string) => {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 70vh;
+    min-height: 60vh;
   }
   .scroll-hint {
     left: 24px;

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const scrolled   = ref(false)
-const activeId   = ref('hero')
+const scrolled = ref(false)
+const activeId = ref('hero')
+const isMobile = ref(false)
+const lastScrollY = ref(0)
 
 const links = [
   { id: 'about',    label: 'About'    },
@@ -12,10 +14,24 @@ const links = [
 ]
 
 const onScroll = () => {
-  scrolled.value = window.scrollY > 60
+  const currentScrollY = window.scrollY
+  scrolled.value = currentScrollY > 60
+
+  if (window.innerWidth <= 768) {
+    if (currentScrollY > lastScrollY.value && currentScrollY > 80) {
+      isMobile.value = true
+    } else if (currentScrollY < lastScrollY.value) {
+      isMobile.value = false
+    }
+    lastScrollY.value = currentScrollY
+  } else {
+    isMobile.value = false
+  }
+
   const ids = ['contact', 'skills', 'projects', 'about', 'hero']
   for (const id of ids) {
     const el = document.getElementById(id)
+    console.log(window.scrollY, el?.offsetTop)
     if (el && window.scrollY >= el.offsetTop - 180) {
       activeId.value = id
       break
@@ -32,8 +48,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <nav :class="['nav', { scrolled }]" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
+  <nav :class="['nav', { scrolled, 'mobile-hidden': isMobile }]" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner" >
       <button class="nav-brand" @click="scrollTo('hero')" aria-label="Go to top">
         JOY<span class="brand-dot">.</span>
       </button>
@@ -64,7 +80,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 28px 64px;
-  transition: padding 0.4s var(--ease), background 0.4s, border-color 0.4s;
+  transition: padding 0.4s var(--ease), background 0.4s, border-color 0.4s, transform 0.25s ease;
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
@@ -73,6 +89,10 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-color: var(--border);
+}
+
+.nav.mobile-hidden {
+  transform: translateY(-100%);
 }
 
 .nav-inner {
