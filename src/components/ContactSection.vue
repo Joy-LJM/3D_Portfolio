@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
+import emailjs from 'emailjs-com'
 
 const form = reactive({ name: '', email: '', message: '' })
 const isNameFieldEmpty = ref(false)
@@ -9,42 +10,49 @@ const sent = ref(false)
 const isSending = ref(false)
 const sendError = ref('')
 
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined
+if (publicKey) {
+  emailjs.init(publicKey)
+}
+
 const onSubmit = async () => {
-  // simple validation
   isNameFieldEmpty.value = !form.name
   isEmailFieldEmpty.value = !form.email
   isMsgFieldEmpty.value = !form.message
 
   if (form.name && form.email && form.message) {
-    await sendMessage()
-  }
-}
+    isSending.value = true
+    sendError.value = ''
 
-const apiUrl = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api/contact`
-  : '/api/contact'
+    if (!serviceId || !templateId || !publicKey) {
+console.log({ serviceId, templateId, publicKey },'>>>>>')
 
-const sendMessage = async () => {
-  isSending.value = true
-  sendError.value = ''
-
-  try {
-    const res = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}))
-      throw new Error(data.error || 'Unable to send message right now.')
+      sendError.value = 'EmailJS is not configured yet.'
+      isSending.value = false
+      return
     }
 
-    sent.value = true
-  } catch (err) {
-    sendError.value = err instanceof Error ? err.message : 'Unable to send message.'
-  } finally {
-    isSending.value = false
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        publicKey,
+      )
+
+      sent.value = true
+    } catch (error) {
+      console.error('EmailJS failed', error)
+      sendError.value = 'Unable to send message right now.'
+    } finally {
+      isSending.value = false
+    }
   }
 }
 
