@@ -9,7 +9,7 @@ onMounted(() => {
     ([entry]) => {
       if (entry.isIntersecting) visible.value = true;
     },
-    { threshold: 0.15 }
+    { threshold: 0.15 },
   );
   if (root.value) observer.observe(root.value);
 });
@@ -21,12 +21,18 @@ onMounted(() => {
     <div class="container">
       <p class="section-label">// about me</p>
 
-      <div :class="['about-layout', { 'reveal in': visible, reveal: !visible }]">
+      <div
+        :class="['about-layout', { 'reveal in': visible, reveal: !visible }]"
+      >
         <!-- Image column -->
         <div class="about-portrait">
           <div class="portrait-frame">
             <div class="portrait-inner">
-              <img src="../img/personal_pic.jpg" alt="Portrait of the developer" class="portrait-img" />
+              <img
+                src="../img/personal_pic.jpg"
+                alt="Portrait of the developer"
+                class="portrait-img"
+              />
             </div>
           </div>
           <div class="portrait-shadow-frame" aria-hidden="true" />
@@ -42,17 +48,18 @@ onMounted(() => {
           </h2>
 
           <p class="about-body">
-            I'm a Software Developer with 3+ years of experience building modern web
-            applications using React, TypeScript, JavaScript, Node.js, and Express.
-            I've developed enterprise software for global companies including HSBC and
-            Lincoln Electric, delivering responsive user interfaces, RESTful APIs, and
-            reliable software solutions.
+            I'm a Software Developer with 3+ years of experience building modern
+            web applications using React, TypeScript, JavaScript, Node.js, and
+            Express. I've developed enterprise software for global companies
+            including HSBC and Lincoln Electric, delivering responsive user
+            interfaces, RESTful APIs, and reliable software solutions.
           </p>
 
           <p class="about-body">
-            I enjoy turning complex requirements into clean, maintainable code while
-            continuously improving performance, usability, and code quality. I'm always
-            looking to learn new technologies and grow as a full-stack developer.
+            I enjoy turning complex requirements into clean, maintainable code
+            while continuously improving performance, usability, and code
+            quality. I'm always looking to learn new technologies and grow as a
+            full-stack developer.
           </p>
         </div>
       </div>
