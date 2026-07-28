@@ -20,8 +20,7 @@ const scrollTo = (id: string) => {
       </h1>
 
       <p class="hero-tagline">
-        A software developer passionate about building modern 
-       applications 
+        A software developer passionate about building modern applications
       </p>
 
       <div class="hero-cta">
@@ -43,7 +42,9 @@ const scrollTo = (id: string) => {
             />
           </svg>
         </button>
-        <button class="btn-ghost" @click="scrollTo('contact')">Get in touch</button>
+        <button class="btn-ghost" @click="scrollTo('contact')">
+          Get in touch
+        </button>
       </div>
     </div>
 
@@ -197,7 +198,9 @@ const scrollTo = (id: string) => {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: background 0.3s, transform 0.3s var(--ease);
+  transition:
+    background 0.3s,
+    transform 0.3s var(--ease);
 }
 .btn-primary:hover {
   background: var(--text);
@@ -242,7 +245,9 @@ const scrollTo = (id: string) => {
   color: var(--muted);
   border: 1px solid var(--border);
   padding: 5px 12px;
-  transition: border-color 0.3s, color 0.3s;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
 }
 .tech-chip:hover {
   border-color: rgba(232, 56, 32, 0.4);
