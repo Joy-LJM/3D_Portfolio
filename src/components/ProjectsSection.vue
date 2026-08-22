@@ -22,7 +22,7 @@ const projects: Project[] = [
     title: "MediBridge",
     desc: "Team capstone project: scalable healthcare frontend with reusable React components, backend service integration, and performance optimization via React Query caching and minimized re-renders.",
     stack: ["React", "Material UI", "React Query", "Node.js", "MongoDB"],
-    href: "https://medi-bridge-1.vercel.app/",
+    href: "https://medi-bridge-rust.vercel.app/",
   },
   {
     num: "03",
